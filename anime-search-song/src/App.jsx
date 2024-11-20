@@ -1,33 +1,58 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { useState } from "react"
+import './App.css'
+import SongSearch from "./components/SongSearch"
+import SongForm from './components/SongForm'
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  //for now use state set of songs to search from
+  const [songs, setSongs] = useState([
+    {
+        "anime": "Demon Slayer",
+        "animeJP": "Kimetsu no Yaiba",
+        "song": "Gurenge",
+        "artist": "Lisa",
+        "seasonNum": 1,
+        "opNum": 1,
+        "overallNum": 1,
+        "isMovie": false,
+    },
+    {
+        "anime": "Demon Slayer",
+        "animeJP": "",
+        "song": "Kizuna no Kiseki",
+        "artist": "Man with a Mission, milet",
+        "seasonNum": 3,
+        "opNum": 1,
+        "overallNum": 4,
+        "isMovie": false,
+    },
+    {
+        "anime": "Jujutsu Kaisen",
+        "animeJP": "",
+        "song": "KaiKai Kitan",
+        "artist": "Eve",
+        "seasonNum": 1,
+        "opNum": 1,
+        "overallNum": 1,
+        "isMovie": false,
+    }
+  ])
+  const addSong = (song) => {
+    songs.push(song)
+  }
+  
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/Anime-Song-Search' element={<SongSearch songs={songs}/>}/>
+          <Route path='/Anime-Song-Search/admin' element={<SongForm addSong={addSong}/>} />
+          <Route path='*' element={<></>} />
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }
