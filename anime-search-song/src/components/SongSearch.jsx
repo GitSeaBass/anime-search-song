@@ -43,7 +43,7 @@ function SongSearch({songs}) {
     }
 
     const goToAdmin = () => {
-        navigate('/Anime-Song-Search/admin')
+        navigate('/anime-search-song/admin')
     }
 
     //creating dropdown list and saving values in state

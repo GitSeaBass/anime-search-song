@@ -35,11 +35,10 @@ function SongForm({addSong}) {
         e.preventDefault()
         addSong(songState)
         alert("Song Submitted")
-        navigate('/Anime-Song-Search')
     }
 
     const returnHome = () => {
-        navigate('/Anime-Song-Search')
+        navigate('/anime-search-song')
     }
 
     return(

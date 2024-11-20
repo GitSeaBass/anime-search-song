@@ -46,8 +46,8 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path='/Anime-Song-Search' element={<SongSearch songs={songs}/>}/>
-          <Route path='/Anime-Song-Search/admin' element={<SongForm addSong={addSong}/>} />
+          <Route path='/anime-search-song' element={<SongSearch songs={songs}/>}/>
+          <Route path='/anime-search-song/admin' element={<SongForm addSong={addSong}/>} />
           <Route path='*' element={<></>} />
         </Routes>
       </BrowserRouter>
