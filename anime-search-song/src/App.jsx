@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import axios from "axios"
 import './App.css'
 import SongSearch from "./components/SongSearch"
 import SongForm from './components/SongForm'
@@ -38,16 +39,25 @@ function App() {
         "isMovie": false,
     }
   ])
-  const addSong = (song) => {
-    songs.push(song)
-  }
+
+  const getUrl = "localhost:5000/api/songs/"
+
+  useEffect(() => {
+    axios.get(getUrl)
+    .then(res => {
+      console.log(res.data)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  })
   
   return (
     <>
       <BrowserRouter>
         <Routes>
           <Route path='/anime-search-song' element={<SongSearch songs={songs}/>}/>
-          <Route path='/anime-search-song/admin' element={<SongForm addSong={addSong}/>} />
+          <Route path='/anime-search-song/admin' element={<SongForm />} />
           <Route path='*' element={<></>} />
         </Routes>
       </BrowserRouter>

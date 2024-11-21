@@ -2,7 +2,7 @@ import './SongForm.css'
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function SongForm({addSong}) {
+function SongForm() {
     const navigate = useNavigate()
 
     const [songState, setSongState] = useState({
@@ -33,7 +33,6 @@ function SongForm({addSong}) {
     // if include e.preventDefault, page wont refresh but form wont clear, otherwise form wont clear but no refresh
     const submitForm = (e) => {
         e.preventDefault()
-        addSong(songState)
         alert("Song Submitted")
     }
 
