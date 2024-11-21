@@ -7,13 +7,12 @@ function SongForm() {
 
     const [songState, setSongState] = useState({
         "anime": "",
-        "animeJP": "",
         "song": "",
         "artist": "",
-        "seasonNum": 0,
-        "opNum": 0,
-        "overallNum": 0,
-        "isMovie": false,
+        "season_num": 0,
+        "op_num": 0,
+        "overall_num": 0,
+        "is_movie": false,
     })
     const changeSongState = (e) => {       
         setSongState({
@@ -37,7 +36,7 @@ function SongForm() {
     }
 
     const returnHome = () => {
-        navigate('/anime-search-song')
+        navigate('/anime-search-song/')
     }
 
     return(
