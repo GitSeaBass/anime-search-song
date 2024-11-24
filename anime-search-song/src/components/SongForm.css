@@ -8,6 +8,12 @@
     margin-top: 1%;
 }
 
+.check-poster {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+}
+
 .form-group {
     display: flex;
     justify-content: space-between;

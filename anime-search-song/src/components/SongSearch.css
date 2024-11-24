@@ -2,3 +2,14 @@
     display: inline;
     margin-right: 3%;
 }
+
+.song-info-container {
+    display: flex;
+}
+
+.result-poster-img {
+    float: left;
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+}

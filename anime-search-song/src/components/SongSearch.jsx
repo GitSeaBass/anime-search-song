@@ -20,8 +20,9 @@ function SongSearch({songs}) {
         e.preventDefault()
 
         try {
+            // won't need JP name in search since can include all search terms in "anime" with comma separated list
             setSearchResults(songs.filter((element) => {
-                return element.anime.toLowerCase().replace(/\s/g, "").includes(search.toLowerCase().replace(/\s/g, "")) || element.animeJP.toLowerCase().replace(/\s/g, "").includes(search.toLowerCase().replace(/\s/g, ""))
+                return element.anime.toLowerCase().replace(/\s/g, "").includes(search.toLowerCase().replace(/\s/g, ""))
             }))
         } catch {
             console.log("No Matching Animes Found")
@@ -47,17 +48,21 @@ function SongSearch({songs}) {
         e.preventDefault()
 
         try {
-            setSearchResults(songs.filter((element) => {
+            setSearchResults(songs.filter((element) => {                
                 // artist array split on comma for given song
                 const removeWhitespace = element.artist.replace(/\s/g, "")
-                // creates array by spliting string on ',' returning array of artist
-                const artistsSplit = removeWhitespace.toLowerCase().split(',')
-                // filter array of artists if they include search
-                const artistIncluded = artistsSplit.filter((artist) => {
-                    return artist.includes(search.toLowerCase())
-                })
-                // if there is an artist, then return true and add song to searchResults
-                return artistIncluded.length > 0
+
+                return removeWhitespace.toLowerCase().includes(search.toLowerCase())
+
+                // unneeded bc can just include on comma separated list
+                    // creates array by spliting string on ',' returning array of artist
+                    //const artistsSplit = removeWhitespace.toLowerCase().split(',')
+                    // filter array of artists if they include search
+                    //const artistIncluded = artistsSplit.filter((artist) => {
+                        //return artist.includes(search.toLowerCase())
+                    //})
+                    // if there is an artist, then return true and add song to searchResults
+                    //return artistIncluded.length > 0
             }))
         } catch {
             console.log("No Matching Artists Found")
@@ -111,7 +116,10 @@ function SongSearch({songs}) {
             
 
             {searchResults.map((song) => (
-                <div key={song.song}><b>{song.anime}</b> Season {song.season_num} OP {song.op_num} ({song.overall_num}): <b>{song.song}</b> by {song.artist}</div>
+                <div className='song-info-container'>
+                    <img className='result-poster-img' key={song._id} src={song.poster_img} alt={song.song}/>
+                    <div key={song.song}><b>{song.anime}</b> Season {song.season_num} OP {song.op_num} ({song.overall_num}): <b>{song.song}</b> by {song.artist}</div>
+                </div>
             ))
 
             }

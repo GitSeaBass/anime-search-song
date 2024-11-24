@@ -13,6 +13,7 @@ function SongForm() {
         "op_num": 0,
         "overall_num": 0,
         "is_movie": false,
+        "poster_img":""
     })
     const changeSongState = (e) => {       
         setSongState({
@@ -25,7 +26,7 @@ function SongForm() {
     const changeSongStateTF = (e) => {
         setSongState({
             ...songState,
-            [e.target.name]: e.target.checked
+            [e.target.name]: e.target.checked.toString()
         })
     }
 
@@ -50,10 +51,12 @@ function SongForm() {
                     <input name='anime' type='text' onChange={changeSongState} required></input>
                 </div>
 
+                {/*}
                 <div className='form-group'>
                     <label>Japanese Anime Name</label>
                     <input name='animeJP' type='text' onChange={changeSongState} ></input>
                 </div>
+                {*/}
 
                 <div className='form-group'>
                     <label>Song Name</label>
@@ -85,15 +88,23 @@ function SongForm() {
                     <input name='isMovie' type='checkbox' onChange={changeSongStateTF}></input>
                 </div>
 
+                <div className='form-group'>
+                    <label>Poster</label>
+                    <input name='poster_img' type='text' onChange={changeSongState}></input>
+                </div>
+
                 <div className='check-form-container'>
                     <h3>Anime Name: {songState.anime}</h3>
-                    <h3>Japanese Anime Name: {songState.animeJP}</h3>
+                    {/*}<h3>Japanese Anime Name: {songState.animeJP}</h3>{*/}
                     <h3>Song Name: {songState.song}</h3>
                     <h3>Artist: {songState.artist}</h3>
                     <h3>Season Number: {songState.seasonNum}</h3>
                     <h3>OP Number: {songState.opNum}</h3>
                     <h3>Overall OP Number: {songState.overallNum}</h3>
-                    <h3>Is Movie?: {songState.isMovie.toString()}</h3>
+                    <h3>Is Movie?: {songState.isMovie}</h3>
+                    <img className='check-poster' src={songState.poster_img} alt="Poster"/>
+
+                    <div></div>
 
                     <input type='submit' id='submit-button'></input>
                     <h5 id='warning-submit-message'>Please Ensure All Above Information Is Correct Before Submitting</h5>
