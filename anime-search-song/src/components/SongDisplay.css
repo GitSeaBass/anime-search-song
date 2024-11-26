@@ -1,0 +1,31 @@
+.list-item {
+    width: 600px;
+}
+
+.song-info-flex-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2%;
+}
+
+.anime-info {
+    text-align: left;
+    width: 50%;
+}
+
+.song-info {
+    text-align: right;
+}
+
+.info-header {
+    margin: 0;
+}
+
+.extra-info {
+    margin-left: 5%;
+}
+
+#anime-names {
+    color: lightgray;
+    opacity: 0.7;
+}

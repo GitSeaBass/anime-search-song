@@ -88,11 +88,6 @@ function SongForm() {
                     <input name='isMovie' type='checkbox' onChange={changeSongStateTF}></input>
                 </div>
 
-                <div className='form-group'>
-                    <label>Poster</label>
-                    <input name='poster_img' type='text' onChange={changeSongState}></input>
-                </div>
-
                 <div className='check-form-container'>
                     <h3>Anime Name: {songState.anime}</h3>
                     {/*}<h3>Japanese Anime Name: {songState.animeJP}</h3>{*/}
@@ -102,9 +97,6 @@ function SongForm() {
                     <h3>OP Number: {songState.opNum}</h3>
                     <h3>Overall OP Number: {songState.overallNum}</h3>
                     <h3>Is Movie?: {songState.isMovie}</h3>
-                    <img className='check-poster' src={songState.poster_img} alt="Poster"/>
-
-                    <div></div>
 
                     <input type='submit' id='submit-button'></input>
                     <h5 id='warning-submit-message'>Please Ensure All Above Information Is Correct Before Submitting</h5>

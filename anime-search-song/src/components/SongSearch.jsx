@@ -1,7 +1,8 @@
 import './SongSearch.css'
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import SearchForm from "./SearchForm";
+import SongDisplay from './SongDisplay';
 
 function SongSearch({songs}) {
     const navigate = useNavigate()
@@ -23,7 +24,7 @@ function SongSearch({songs}) {
             // won't need JP name in search since can include all search terms in "anime" with comma separated list
             setSearchResults(songs.filter((element) => {
                 return element.anime.toLowerCase().replace(/\s/g, "").includes(search.toLowerCase().replace(/\s/g, ""))
-            }))
+            }).sort((a,b) => (a.anime > b.anime ? 1 : -1))) // sort songs alphabetically by anime name after filter them
         } catch {
             console.log("No Matching Animes Found")
         }
@@ -37,7 +38,7 @@ function SongSearch({songs}) {
         try {
             setSearchResults(songs.filter((element) => {
                 return element.song.toLowerCase().replace(/\s/g, "").includes(search.toLowerCase().replace(/\s/g, ""))
-            }))
+            }).sort((a,b) => (a.anime > b.anime ? 1 : -1)))
         } catch {
             console.log("No Matching Songs Found")
         }
@@ -63,7 +64,7 @@ function SongSearch({songs}) {
                     //})
                     // if there is an artist, then return true and add song to searchResults
                     //return artistIncluded.length > 0
-            }))
+            }).sort((a,b) => (a.anime > b.anime ? 1 : -1)))
         } catch {
             console.log("No Matching Artists Found")
         }
@@ -116,10 +117,7 @@ function SongSearch({songs}) {
             
 
             {searchResults.map((song) => (
-                <div className='song-info-container'>
-                    <img className='result-poster-img' key={song._id} src={song.poster_img} alt={song.song}/>
-                    <div key={song.song}><b>{song.anime}</b> Season {song.season_num} OP {song.op_num} ({song.overall_num}): <b>{song.song}</b> by {song.artist}</div>
-                </div>
+                <SongDisplay song={song}/>
             ))
 
             }
