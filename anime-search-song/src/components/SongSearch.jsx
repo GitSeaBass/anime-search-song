@@ -54,16 +54,6 @@ function SongSearch({songs}) {
                 const removeWhitespace = element.artist.replace(/\s/g, "")
 
                 return removeWhitespace.toLowerCase().includes(search.toLowerCase())
-
-                // unneeded bc can just include on comma separated list
-                    // creates array by spliting string on ',' returning array of artist
-                    //const artistsSplit = removeWhitespace.toLowerCase().split(',')
-                    // filter array of artists if they include search
-                    //const artistIncluded = artistsSplit.filter((artist) => {
-                        //return artist.includes(search.toLowerCase())
-                    //})
-                    // if there is an artist, then return true and add song to searchResults
-                    //return artistIncluded.length > 0
             }).sort((a,b) => (a.anime > b.anime ? 1 : -1)))
         } catch {
             console.log("No Matching Artists Found")

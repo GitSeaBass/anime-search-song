@@ -1,3 +1,4 @@
+import axios from 'axios';
 import './SongForm.css'
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -13,7 +14,6 @@ function SongForm() {
         "op_num": 0,
         "overall_num": 0,
         "is_movie": false,
-        "poster_img":""
     })
     const changeSongState = (e) => {       
         setSongState({
@@ -30,10 +30,26 @@ function SongForm() {
         })
     }
 
+    const postUrl = "http://localhost:5000/api/songs/"
+
+    function postSong() {
+        axios.post(postUrl, songState, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(() => {
+            alert("Song submitted successfully")
+        })
+        .catch(err => {
+            alert(err)
+        })
+    }
+
     // if include e.preventDefault, page wont refresh but form wont clear, otherwise form wont clear but no refresh
     const submitForm = (e) => {
         e.preventDefault()
-        alert("Song Submitted")
+        postSong()
     }
 
     const returnHome = () => {
@@ -70,22 +86,22 @@ function SongForm() {
 
                 <div className='form-group'>
                     <label>Season Number</label>
-                    <input name='seasonNum' type='number' min='1' onChange={changeSongState} required></input>
+                    <input name='season_num' type='number' min='1' onChange={changeSongState} required></input>
                 </div>
 
                 <div className='form-group'>
                     <label>OP Number</label>
-                    <input name='opNum' type='number' min='1' onChange={changeSongState} required></input>
+                    <input name='op_num' type='number' min='1' onChange={changeSongState} required></input>
                 </div>
 
                 <div className='form-group'>
                     <label>Overall OP Number</label>
-                    <input name='overallNum' type='number' min='1' onChange={changeSongState} required></input>
+                    <input name='overall_num' type='number' min='1' onChange={changeSongState} required></input>
                 </div>
 
                 <div className='form-group'>
                     <label>Is Movie?</label>
-                    <input name='isMovie' type='checkbox' onChange={changeSongStateTF}></input>
+                    <input name='is_movie' type='checkbox' onChange={changeSongStateTF}></input>
                 </div>
 
                 <div className='check-form-container'>
@@ -93,10 +109,10 @@ function SongForm() {
                     {/*}<h3>Japanese Anime Name: {songState.animeJP}</h3>{*/}
                     <h3>Song Name: {songState.song}</h3>
                     <h3>Artist: {songState.artist}</h3>
-                    <h3>Season Number: {songState.seasonNum}</h3>
-                    <h3>OP Number: {songState.opNum}</h3>
-                    <h3>Overall OP Number: {songState.overallNum}</h3>
-                    <h3>Is Movie?: {songState.isMovie}</h3>
+                    <h3>Season Number: {songState.season_num}</h3>
+                    <h3>OP Number: {songState.op_num}</h3>
+                    <h3>Overall OP Number: {songState.overall_num}</h3>
+                    <h3>Is Movie?: {songState.is_movie}</h3>
 
                     <input type='submit' id='submit-button'></input>
                     <h5 id='warning-submit-message'>Please Ensure All Above Information Is Correct Before Submitting</h5>

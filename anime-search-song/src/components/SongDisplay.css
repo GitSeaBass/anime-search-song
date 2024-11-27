@@ -25,6 +25,10 @@
     margin-left: 5%;
 }
 
+.alt-names {
+    width: 100%;
+}
+
 #anime-names {
     color: lightgray;
     opacity: 0.7;
