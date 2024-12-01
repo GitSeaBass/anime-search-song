@@ -2,7 +2,6 @@ import './SongDisplay.css'
 
 function SongDisplay({ song }) {
     const animeSplit = song.anime.split(',')
-    const artistSplit = song.artist.split(',')
     
     return (
         <div className='list-item'>

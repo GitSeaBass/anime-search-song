@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import SearchForm from "./SearchForm";
 import SongDisplay from './SongDisplay';
 
-function SongSearch({songs}) {
+function SongSearch({songs, serverStatus}) {
     const navigate = useNavigate()
 
     // saving the current search keywords
@@ -72,9 +72,22 @@ function SongSearch({songs}) {
     
     return (
         <>
-            <button onClick={goToAdmin}>Add Song To Database</button>
+            {serverStatus?
+                <button onClick={goToAdmin}>Add Song To Database</button>
+            :
+                <></>
+            }
             <h1>Anime Song Search</h1>
             <h5>Search by show, song name, or artist</h5>
+
+            {serverStatus?
+                <></>   
+            :
+                <div className='server-err-message'>
+                    <h3>Server Is Currently Not Running</h3>
+                    <h5>Using Limited Backup Data</h5>
+                </div>
+            }
 
             <select className='option-selector' value={option} onChange={changeOption}>
                 <option value='anime'>Anime Name</option>
@@ -107,7 +120,7 @@ function SongSearch({songs}) {
             
 
             {searchResults.map((song) => (
-                <SongDisplay song={song}/>
+                <SongDisplay key={song._id} song={song}/>
             ))
 
             }

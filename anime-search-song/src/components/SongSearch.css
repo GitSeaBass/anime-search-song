@@ -2,3 +2,16 @@
     display: inline;
     margin-right: 3%;
 }
+
+.server-err-message {
+    color: lightcoral;
+    margin: 0 0 5% 0;
+}
+
+.server-err-message > h3 {
+    margin: 0;
+}
+
+.server-err-message > h5 {
+    margin: 0;
+}
