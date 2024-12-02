@@ -10,7 +10,7 @@ function SongSearch({songs, serverStatus}) {
     // saving the current search keywords
     const [search, setSearch] = useState('')
     const changeSearch = (e) => {
-        setSearch(e.target.value)
+        setSearch(e.target.value.replace(/\s/g, ""))
     }
 
     // saves results of the search
