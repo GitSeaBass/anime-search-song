@@ -3,3 +3,16 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 1%;
 }
+
+.button-flex {
+    display: flex;
+    justify-content: space-around;
+}
+
+.delete-button {
+    color: red;
+}
+
+.delete-button:hover {
+    border: 1px solid red;
+}

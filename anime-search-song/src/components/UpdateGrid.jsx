@@ -36,6 +36,20 @@ function UpdateGrid({ songs }) {
         })
     }
 
+    const deleteSong = (e) => {
+        const songId = e.target.name
+        const delUrl = url + songId
+
+        axios.delete(delUrl)
+        .then(() => {
+            alert('Song Successfully Deleted')
+            navigate('/anime-search-song/')
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+    }
+
     const returnHome = () => {
         navigate('/anime-search-song/')
     }
@@ -87,7 +101,11 @@ function UpdateGrid({ songs }) {
                 {songs.map((song) => (
                     <div key={song._id}>
                         <SongDisplay song={song}/>
-                        <button name={song._id} onClick={updateClick}>Update</button>
+
+                        <div className='button-flex'> 
+                            <button name={song._id} onClick={updateClick}>Update</button>
+                            <button className='delete-button' name={song._id} onClick={deleteSong}>Delete</button>
+                        </div>
                     </div>
                 ))}
             </div>
