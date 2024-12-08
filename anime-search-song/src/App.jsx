@@ -2,9 +2,11 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { useState, useEffect } from "react"
 import axios from "axios"
 import './App.css'
+import { backupData } from "./assets/BackupData"
 import SongSearch from "./components/SongSearch"
 import SongForm from './components/SongForm'
-import { backupData } from "./assets/BackupData"
+import UpdateGrid from "./components/UpdateGrid"
+
 
 function App() {
   //for now use state set of songs to search from
@@ -34,7 +36,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/anime-search-song/' element={<SongSearch songs={songs} serverStatus={serverRunning}/>}/>
-          <Route path='/anime-search-song/admin' element={<SongForm />} />
+          <Route path='/anime-search-song/admin' element={<SongForm songs={songs}/>} />
+          <Route path='/anime-search-song/update' element={<UpdateGrid songs={songs}/>} />
           <Route path='*' element={<></>} />
         </Routes>
       </BrowserRouter>

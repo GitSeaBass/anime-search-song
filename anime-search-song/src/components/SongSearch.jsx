@@ -64,6 +64,10 @@ function SongSearch({songs, serverStatus}) {
         navigate('/anime-search-song/admin')
     }
 
+    const goToUpdate = () => {
+        navigate('/anime-search-song/update')
+    }
+
     //creating dropdown list and saving values in state
     const [option, setOption] = useState('anime')
     const changeOption = (e) => {
@@ -73,7 +77,10 @@ function SongSearch({songs, serverStatus}) {
     return (
         <>
             {serverStatus?
-                <button onClick={goToAdmin}>Add Song To Database</button>
+                <>
+                    <button onClick={goToAdmin}>Add Song To Database</button>
+                    <button onClick={goToUpdate}>Update Song</button>
+                </>
             :
                 <></>
             }

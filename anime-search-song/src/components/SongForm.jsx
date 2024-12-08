@@ -3,7 +3,7 @@ import './SongForm.css'
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function SongForm() {
+function SongForm({ songs }) {
     const navigate = useNavigate()
 
     const [songState, setSongState] = useState({
@@ -59,6 +59,7 @@ function SongForm() {
     return(
         <>
             <h1>Add Song to Database</h1>
+            <button onClick={returnHome}>Return To Search</button>
             <h5>Fill in the form with correct information</h5>
 
             <form onSubmit={submitForm}>
@@ -117,8 +118,6 @@ function SongForm() {
                     <input type='submit' id='submit-button'></input>
                     <h5 id='warning-submit-message'>Please Ensure All Above Information Is Correct Before Submitting</h5>
                 </div>
-
-                <button onClick={returnHome}>Return To Search</button>
             </form>
         </> 
     )
